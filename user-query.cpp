@@ -13,9 +13,8 @@ int main()
 		std::cout << fields.RDB$RELATION_ID.asShort() << ", " << fields.RDB$RELATION_NAME.asString() << ", " <<
 			fields.RDB$SYSTEM_FLAG.asShort() << std::endl;
 
-		// Query was changed and not re-preprocessed, so can access
-		// fields.RDB$RELATION_ID.asString() or fields.RDB$RELATION_NAME.asShort()
-		// as well the new field
+		// Query was re-preprocessed, so can not access fields with wrong type
+		// std::cout << fields.RDB$RELATION_ID.asString() << std::endl;
 	});
 
 	return 0;

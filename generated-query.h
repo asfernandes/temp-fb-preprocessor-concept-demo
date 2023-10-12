@@ -8,7 +8,7 @@ class ReadRdbRelations
 {
 private:
 	static constexpr StringLiteral GENERATED_SQL = R"""(
-		select rdb$relation_id, rdb$relation_name
+		select rdb$relation_id, rdb$relation_name, rdb$system_flag
 			from rdb$relations
 	)""";
 
@@ -21,9 +21,7 @@ public:
 	{
 		ThisFieldSelector<int16_t> RDB$RELATION_ID;
 		ThisFieldSelector<std::string> RDB$RELATION_NAME;
-		// Field added manually. Type does not matter (as GENERATED_SQL differs from USER_SQL)
-		// and here was purposely used incorrectly.
-		ThisFieldSelector<std::string> RDB$SYSTEM_FLAG;
+		ThisFieldSelector<int16_t> RDB$SYSTEM_FLAG;
 	};
 
 public:
